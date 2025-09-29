@@ -8,7 +8,6 @@ class Pedido(Base):
     __tablename__ = 'pedido'
     id = Column(Integer, primary_key=True, autoincrement=True)
     cliente = Column(String(100))
-    data_pedido = Column(Date, default=date.today)
     itens = relationship("ItemPedido", back_populates="pedido", cascade="all, delete-orphan")
 
 class ItemPedido(Base):
@@ -18,5 +17,6 @@ class ItemPedido(Base):
     produto = Column(String(100))
     quantidade = Column(Integer)
     preco = Column(DECIMAL(10,2))
+    categoria = Column(String(100))
 
     pedido = relationship("Pedido", back_populates="itens")

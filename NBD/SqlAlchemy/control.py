@@ -11,14 +11,12 @@ class PedidoControl:
         self.db.refresh(pedido)
         return pedido
     
-    def atualizar_pedido(self, pedido_id, novo_cliente=None, nova_data=None):
+    def atualizar_pedido(self, pedido_id, novo_cliente=None):
         pedido = self.db.get(Pedido, pedido_id)
         if not pedido:
             raise ValueError("Pedido não encontrado")
         if novo_cliente is not None:
             pedido.cliente = novo_cliente
-        if nova_data is not None:
-            pedido.data_pedido = nova_data
         self.db.commit()
         return pedido
 
@@ -29,7 +27,6 @@ class PedidoControl:
         self.db.delete(pedido)
         self.db.commit()
     
-          
     def listar_pedidos_com_itens(self):
         return self.db.query(Pedido).all()
 

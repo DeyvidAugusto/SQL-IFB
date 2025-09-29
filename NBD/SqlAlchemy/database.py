@@ -4,7 +4,7 @@ import logging
 
 logging.getLogger('sqlalchemy.engine').setLevel(logging.WARNING)
 
-DATABASE_URL = "mysql+mysqlconnector://root:@localhost/db_pedidos"
+DATABASE_URL = "mysql+mysqlconnector://root:root@127.0.0.1/db_pedidos"
 
 engine = create_engine(DATABASE_URL, echo=False, isolation_level="AUTOCOMMIT")
 SessionLocal = sessionmaker(bind=engine)
